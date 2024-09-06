@@ -1,0 +1,67 @@
+/*  
+comment 
+body { }     tag
+#sunday { }; id
+.test { }; class
+
+*/
+
+    /* Flexbox 레이아웃 설정 */
+    html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .container-flex {
+        flex: 1;
+    }
+    footer {
+        background-color: #f8f9fa;
+        padding: 10px 0;
+    }
+
+       /* 추가된 부분: 팝업창을 위한 스타일 */
+       #popupLayer {
+        display: none; /* 기본적으로 숨김 */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        width: 300px;
+        text-align: center;
+    }
+
+    #popupLayer button {
+        margin-top: 10px;
+    }
+
+    #popupOverlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+
+
+a:link { text-decoration:none; color:#333333; }
+a:hover { text-decoration:none; color:#555555; }
+a:visited { text-decoration:none; color:#333333; }
+
+.colLine {
+    line-height:180%;
+    min-height:30px;
+    border-bottom:1px solid #CCCCCC;
+    padding-top:4px;
+    padding-bottom:4px;
+}

@@ -1,0 +1,26 @@
+KPC mother mat match ;');
+KPC 홍길동이순신010-123a-5678010-1234-1234대한민국;');
+KPC mother mat match ;');
+KPC 홍길동이순신010-123a-5678010-1234-1234대한민국;');
+KPC mother mat match ;');
+KPC 홍길동이순신010-123a-5678010-1234-1234대한민국;');
+KPC mother mat match ;');
+KPC 홍길동이순신010-123a-5678010-1234-1234대한민국;');
+KPC m[ao]t;');
+');
+create table users (');
+    no  integer,');
+    name    varchar(30),');
+    id      varchar(20),');
+    age     integer');
+);');
+');
+INSERT INTO users (no, name, id, age) values('1', '이순신', 'lee', '10');');
+\t  ---> ','');
+$    ---> ');');
+^   --> INSERT INTO users (no, name, id, age) values('
+순서','이름','아이디','나이');
+1','이순신','lee','10');
+2','홍길동','hong','25');
+3','강감찬','kang','12');
+');

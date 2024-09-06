@@ -1,5 +1,5 @@
 <?php
-    $LPP = 10;
+    $LPP = 100;
     if(!isset($_GET["page"]))
         $page = 1;
     else
@@ -69,9 +69,40 @@
         {
             $SendingMsg = "접속자 수가 너무 많습니다.";
             $ReceiveMobile = "010-0000-0000";
-            include "auto_sms.php";
+            //include "auto_sms.php";
             $_SESSION[$sess_sms] = "sendOK";
         }
+
+        function ip2country($ip)
+        {
+            // $ip = 1.2.3.4
+            $splitIP = explode(".", $ip);
+            include "ip_files/" . $splitIP[0] . ".php";
+
+            $code = ($splitIP[0] * 256 * 256 * 256 ) 
+                    + ($splitIP[1] * 256 * 256 )
+                    + ($splitIP[2] * 256 )
+                    + $splitIP[3];
+            // code = ip주소 4바이트의 unsigned int 값을 10진법
+
+            foreach($ranges as $key => $value)
+            {
+                if($key <= $code)
+                {
+                    if($ranges[$key][0] >= $code)
+                        $country = $ranges[$key][1]; break;
+                }
+            }
+
+            if(!isset($country))
+                $country = "";
+
+            if(isset($country) and $country == "")
+                $country = "noflag";
+
+            return $country;            
+        }
+
       ?>
     <div class="container">
 
@@ -84,17 +115,21 @@
             <div class="col colLine">IP</div>
             <div class="col colLine">시간</div>
             <div class="col-5 colLine">WORK</div>
+            <div class="col-1 colLine">국가</div>
             <div class="col colLine">비고</div>
         </div>
     <?php
         while($data)
         {
+            $nation = ip2country($data["ip"]);
+            $nationFlag = "<img src='flags/$nation.gif'>";
             ?>
             <div class="row">
                 <div class="col-1 colLine"><?php echo $data["idx"]?></div>
                 <div class="col colLine"><?php echo $data["ip"]?></div>
                 <div class="col colLine"><?php echo $data["time"]?></div>
                 <div class="col-5 colLine"><?php echo $data["work"]?></div>
+                <div class="col-1 colLine"><?php echo $nationFlag ?></div>
                 <div class="col colLine">비고</div>
             </div>
 
@@ -125,6 +160,6 @@
         setTimeout(function(){
             //location.href='index.php?cmd=log';
             location.reload();
-        }, 3000);
+        }, 3000000); // 새로고침 효과 없게
 
     </script>

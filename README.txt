@@ -301,3 +301,18 @@ b
 
 
 README Test
+
+ASLR 해제(비활성)
+– Address Space Layout Randomization
+– 활성 : $ echo “2” > /proc/sys/kernel/randomize_va_space
+– 비활성 : $ echo “0” > /proc/sys/kernel/randomize_va_space
+
+
+char *str="Hello World";
+
+printf("%s", str);
+printf(str);
+
+int i = 3;
+
+printf("%d %d", i);
